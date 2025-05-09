@@ -1,0 +1,18 @@
+body#page-site-index #page .main-inner {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+body#page-site-index #page.drawers .main-inner {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.admin-blocks-region {
+    border: 1px solid #cdd0d35c;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #cdd0d35c;
+    border-radius: 7px;
+}

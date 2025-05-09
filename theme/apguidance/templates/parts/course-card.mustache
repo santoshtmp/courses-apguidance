@@ -1,0 +1,69 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_apguidance/parts/course-card
+
+    @variables:
+        id
+        categoryid
+        datatype
+        shortname
+        fullname
+        category_name
+        course_link
+        course_category_link
+        enrollment_link
+        thumbnail_image_link
+        summary
+        enrollment_methods_info
+
+    This is used in /course and /homepage courses card section
+}}
+
+
+<div class="col-md-6 col-lg-4" data-courseid="{{id}}" data-type="{{datatype}}">
+    <div class="card course-card shadow-sm h-100 position-relative" >
+
+        <img src="{{thumbnail_image_link}}" class="course-img" alt="{{fullname}} Course Image" />
+
+        <div class="course-category-wrapper">
+            <a id="category-{{categoryid}}" href="{{course_category_link}}" class="course-category-link">
+                {{category_name}}
+            </a>
+        </div>
+
+        <div class="card-body">
+            <h3 class="course-title fw-semibold mb-2">
+                <a href="{{course_link}}" class="text-decoration-none">
+                    {{fullname}}
+                </a>
+            </h3>
+            <div class="course-desc text-muted small">
+                {{{summary}}}
+            </div>
+            <div class="other_meta_information">
+                {{{other_meta_information}}}
+            </div>
+            <a href="{{course_link}}" class="course-link btn btn-primary text-decoration-none mt-3">
+                {{#str}} view_course, theme_apguidance {{/str}}
+            </a>
+        </div>
+    </div>
+</div>
+
+
+

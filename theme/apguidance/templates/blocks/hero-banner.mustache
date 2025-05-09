@@ -1,0 +1,56 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_apguidance/blocks/hero-banner
+}}
+
+{{#hero_banner}}
+<section class="hero-banner mb-6">
+    <div class="container">
+        {{! is_edit_mode to edit }}
+        {{#is_edit_mode}}
+        <div class="content-edit-btn">
+            <a href="/admin/settings.php?section=themesettingapguidance#frontpage_setting_tab" >Edit</a>
+        </div>
+        {{/is_edit_mode}}
+        <div class="row align-items-center">
+        {{! Text Content }}
+        <div class="col-md-6">
+            {{#banner_title_1}}
+            <h1 class="hero-title">{{banner_title_1}}</h1>
+            {{/banner_title_1}}
+            {{#banner_description_1}}
+            <div class="hero-description">{{{banner_description_1}}}</div>
+            {{/banner_description_1}}
+            <div class="banner-btn-wrapper">
+                {{#banner_cta}}
+                {{#label}}
+                <a href="{{link}}" class="btn btn-primary btn-cta-{{number}}">{{label}}</a>
+                {{/label}}
+                {{/banner_cta}}
+            </div>
+        </div>
+        {{! Banner Image }}
+        <div class="col-md-6 text-center mt-4 mt-md-0">
+            {{#banner_image_1}}
+            <img src="{{banner_image_1}}" alt="Hero Banner" class="hero-image" width="500" height="300" />
+            {{/banner_image_1}}
+        </div>
+        </div>
+    </div>
+</section>
+{{/hero_banner}}
