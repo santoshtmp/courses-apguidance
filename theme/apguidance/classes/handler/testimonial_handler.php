@@ -88,6 +88,7 @@ class testimonial_handler {
             $data->name = $mform_data->name;
             $data->designation = $mform_data->designation;
             $data->content = $mform_data->content;
+            $data->other = $mform_data->other;
             $data->image = $fileid;
             $data->status = isset($mform_data->status) ? 1 : 0; // status 0=draft, 1=published
 
@@ -170,6 +171,8 @@ class testimonial_handler {
                 $entry->name = $data->name;
                 $entry->designation = $data->designation;
                 $entry->content = $data->content;
+                $entry->other = $data->other;
+
                 if ($data->image) {
                     $image_file = $DB->get_record('files', ['id' => $data->image]);
                     $draftitemid = $image_file->itemid;
@@ -221,8 +224,8 @@ class testimonial_handler {
         // 
         require_once($CFG->libdir . '/tablelib.php');
         $table = new \flexible_table('moodle-data');
-        $tablecolumns = ['id', 'name', 'designation', 'content', 'image', 'status', 'action'];
-        $tableheaders = ['S.N', 'Name', 'Designation', 'Content', 'Image', 'Status', 'Action'];
+        $tablecolumns = ['id', 'name', 'designation', 'content', 'image', 'other', 'status', 'action'];
+        $tableheaders = ['S.N', 'Name', 'Designation', 'Content', 'Image', 'Other', 'Status', 'Action'];
         $table->define_columns($tablecolumns);
         $table->define_headers($tableheaders);
         $table->define_baseurl($baseurl);
@@ -300,6 +303,7 @@ class testimonial_handler {
                 $row[] = $record['designation'];
                 $row[] = $record['content'];
                 $row[] = $testimonial_image;
+                $row[] = $record['other'];
                 $row[] = ($record['status']) ? "Published" : "Draft";
                 $row[] = $action_menu_output->render($menu);
                 $table->add_data($row);
@@ -407,7 +411,7 @@ class testimonial_handler {
         $sql_query = 'SELECT *        
         FROM {apguidance_testimonial} AS testi ' .
             $where_condition_apply . '
-        ORDER BY testi.id DESC
+        ORDER BY testi.timemodified DESC
         ';
         // execute sql query
         $data_records = $DB->get_records_sql($sql_query, $sql_params, $limitfrom = $limitfrom, $limitnum = $limitnum);

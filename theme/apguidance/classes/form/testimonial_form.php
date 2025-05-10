@@ -77,6 +77,10 @@ class testimonial_form extends \moodleform {
         ];
         $mform->addElement('filemanager', 'testimonial_image', "Image", null, $testimonial_image_options);
 
+        // 
+        $mform->addElement('textarea', 'other', "Other Information");
+        $mform->setType('other', PARAM_RAW);
+
         // Draft or publish state
         $mform->addElement('checkbox', 'status', "Status", "published");
         $mform->setDefault('status', 1);

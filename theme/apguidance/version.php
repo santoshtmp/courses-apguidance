@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_apguidance';
 
 // This is the version of the plugin.
-$plugin->version = 2025050901;
+$plugin->version = 2025050903;
 
 // This is the named version.
 $plugin->release = '1.0.0';

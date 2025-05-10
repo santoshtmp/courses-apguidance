@@ -27,12 +27,17 @@
           <img src="{{image_url}}" alt="{{name}} image" class="testimonial-img" />
           {{/image_url}}
           <div class="testimonial-description">
-            "{{{content}}}"
+            {{{content}}}
           </div>
           <h5 class="testimonial-name">{{name}}</h5>
           {{#designation}}
           <span class="testimonial-designation">{{designation}}</span>
           {{/designation}}
+          {{#other}}
+          <div class="testimonial-other-info">
+            {{{other}}}
+          </div>
+          {{/other}}
         </div>
       </div>
       {{/testimonial}}
@@ -69,7 +74,7 @@
           carouselItems[currentIndex].classList.remove('active'); // Remove active class from current item
           currentIndex = (currentIndex + 1) % carouselItems.length; // Loop to the first item after the last
           carouselItems[currentIndex].classList.add('active'); // Add active class to the next item
-          resetAutoSlide(); // Reset the interval when moving to the next item
+          // resetAutoSlide(); // Reset the interval when moving to the next item
       }
 
       // Function to show the previous item
@@ -77,7 +82,7 @@
           carouselItems[currentIndex].classList.remove('active'); // Remove active class from current item
           currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length; // Loop to the last item if it's the first
           carouselItems[currentIndex].classList.add('active'); // Add active class to the previous item
-          resetAutoSlide(); // Reset the interval when moving to the previous item
+          // resetAutoSlide(); // Reset the interval when moving to the previous item
       }
 
       // Function to reset the interval
@@ -91,7 +96,7 @@
       document.querySelector('.carousel-control-prev').addEventListener('click', showPrevItem);
 
       // Start auto-sliding when the page loads
-      resetAutoSlide(); // Call the reset function to start the interval when the page loads
+      // resetAutoSlide(); // Call the reset function to start the interval when the page loads
     });
   </script>
 </section>
