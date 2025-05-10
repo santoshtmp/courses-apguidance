@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['configtitle'] = 'AP Guidance';
 $string['pluginname'] = 'AP Guidance';
 $string['choosereadme'] = 'AP Guidance theme is the child theme of default boost theme';
-$string['view_course']= 'View course';
+$string['view_course'] = 'View course';
 // Block region
 $string['region-above-content'] = 'Above Content';
 $string['region-below-content'] = 'Below Content';
@@ -72,3 +72,15 @@ $string['contactus'] = 'Contact us';
 $string['followus'] = 'Follow us';
 $string['subscribe'] = 'Subscribe';
 $string['your_email'] = 'Your Email';
+$string['contact_detail'] = 'Contact detail';
+
+// testimonial
+$string['testimonial'] = 'Testimonial';
+$string['testimonial_list'] = 'Testimonial list';
+$string['add_testimonial'] = 'Add Testimonial';
+$string['testimonial_added'] = 'Testimonial {$a->name} is sucesfully added. Continue Adding Add New Testimonial or <a href="/theme/apguidance/page/testimonial/list.php">View all</a>.';
+$string['testimonial_updated'] = 'Testimonial {$a->name} is sucesfully updated.';
+$string['testimonial_delete'] = 'Testimonial {$a->name} is sucesfully deleted.';
+$string['testimonial_error_submit'] = "Testimonial Error on submit.";
+$string['testimonial_error_delete'] = "Testimonial Error on delete.";
+$string['testimonial_missing'] = "Testimonial data is missing.";

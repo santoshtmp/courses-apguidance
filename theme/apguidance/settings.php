@@ -30,6 +30,48 @@ if (optional_param('section', '', PARAM_TEXT) == 'themesettingapguidance') {
     }
 }
 
+// Ensure only admins see this
+if ($hassiteconfig) {
+    //Create the top-level category: "APGuidance"
+    $ADMIN->add('root', new admin_category('apguidanceadmin', get_string('pluginname', 'theme_apguidance')));
+    // Create a subcategory inside "APGuidance" (e.g., "General Settings")
+    $ADMIN->add('apguidanceadmin', new admin_category('apguidanceadmin_general', get_string('pluginname', 'theme_apguidance')));
+
+    /**
+     * APGuidance Setings
+     */
+    $ADMIN->add('apguidanceadmin_general', new admin_externalpage(
+        'apguidanceadmin_themesettingapguidance', // Unique identifier
+        get_string('configtitle', 'theme_apguidance'), // Link name
+        new moodle_url('/admin/settings.php?section=themesettingapguidance') // External URL
+    ));
+
+
+    // /**
+    //  * Contact Detail
+    //  */
+    // $ADMIN->add('apguidanceadmin_general', new admin_externalpage(
+    //     'apguidanceadmin_contact_detail', // Unique identifier
+    //     get_string('contact_detail', 'theme_apguidance'), // Link name
+    //     new moodle_url('/admin/settings.php?section=themesettingapguidance&title=theme-apguidance-contact-detail#general_setting_tab') // External URL
+    // ));
+
+    /**
+     * Testimonial
+     */
+
+    $ADMIN->add('apguidanceadmin_general', new admin_externalpage(
+        'apguidanceadmin_testimonial', // Unique identifier
+        get_string('testimonial', 'theme_apguidance'), // Link name
+        new moodle_url('/theme/apguidance/page/testimonial/list.php') // External URL
+    ));
+
+
+    /**
+     *
+     */
+}
+
 /**
  * Theme Settings
  */

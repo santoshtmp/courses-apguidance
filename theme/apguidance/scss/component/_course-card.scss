@@ -2,56 +2,79 @@
     display: flex;
     flex-wrap: wrap;
     margin: 12px 0;
+    row-gap: 24px;
 
-    .course-card {
-        border-radius: 10px;
-        overflow: hidden;
-        transition: box-shadow 0.3s ease;
-    }
-
-    .course-card:hover {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .course-img {
+    .courses-card-wrapper {
         width: 100%;
-        max-height: 180px;
-        object-fit: cover;
-    }
+        padding: 0 12px;
+        box-sizing: border-box;
 
-    .course-category-wrapper {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        z-index: 2;
-    }
+        .course-card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
 
-    .course-category-link {
-        display: inline-block;
-        padding: 5px 10px;
-        font-size: 0.75rem;
-        background-color: #0d6efd;
-        color: #fff;
-        border-radius: 0.25rem;
-        text-decoration: none;
-    }
+        .course-card:hover {
+            box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+        }
 
-    .course-category-link:hover {
-        background-color: #0b5ed7;
-    }
+        .course-img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+        }
 
-    .course-title {
-        font-size: 1.2rem;
-    }
+        .course-category-wrapper {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+        }
 
-    .course-link:hover {
-        text-decoration: underline;
-    }
+        .course-category-link {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 0.75rem;
+            background-color: #0d6efd;
+            color: #fff;
+            border-radius: 0.25rem;
+            text-decoration: none;
+        }
 
-    .other_meta_information {
-        .teachers {
-            list-style: none;
-            padding: 0px;
+        .course-category-link:hover {
+            background-color: #0b5ed7;
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+        }
+
+        .course-link:hover {
+            text-decoration: underline;
+        }
+
+        .other_meta_information {
+            .teachers {
+                list-style: none;
+                padding: 0px;
+            }
         }
     }
+
+    @media (min-width: 768px) {
+        .courses-card-wrapper {
+            flex: 0 0 auto;
+            max-width: 50%;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .courses-card-wrapper {
+            flex: 0 0 auto;
+            max-width: 33.33333333%;
+        }
+    }
+
+
 }

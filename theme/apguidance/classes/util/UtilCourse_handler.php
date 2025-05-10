@@ -319,7 +319,7 @@ class UtilCourse_handler {
             $courseinfo['fullname'] =  format_string($course->fullname);
             $courseinfo['category_name'] = format_string($course_categories->name);
             $courseinfo['course_link'] = $CFG->wwwroot . '/course/view.php?id=' . $course->id;
-            $courseinfo['course_category_link'] = (new \moodle_url('/course/index.php', array('id' => $course->category)))->out();
+            $courseinfo['course_category_link'] = (new \moodle_url('/course/index.php', array('categoryid' => $course->category)))->out();
             $courseinfo['enrollment_link'] = (new \moodle_url('/enrol/index.php', array('id' => $course->id)))->out();
             $courseinfo['thumbnail_image_link'] = self::get_course_image($course, $default_values);
             $courseinfo['summary'] = self::get_course_formatted_summary($course);

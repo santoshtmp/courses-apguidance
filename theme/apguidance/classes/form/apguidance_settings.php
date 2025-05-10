@@ -303,6 +303,25 @@ class apguidance_settings {
             }
         }
 
+        // =========================================================
+        $name = 'theme_apguidance/testimonial_block_settings';
+        $heading = 'Testimonial Block';
+        $information = '';
+        $setting = new admin_setting_heading($name, $heading, $information);
+        $frontpage_tab->add($setting);
+
+        // testimonial_home_block
+        $name = 'theme_apguidance/testimonial_home_block';
+        $title = 'Enable Home Testimonial Block';
+        $description = 'This will show the testimonial block in home page. <br> <a href="/theme/apguidance/page/testimonial/list.php">Testimonial List</a>';
+        $default = 0;
+        $choices = [
+            0 => 'No',
+            1 => 'Yes',
+        ];
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $frontpage_tab->add($setting);
+
         // Must add the page after definiting all the settings!
         $settings->add($frontpage_tab);
     }

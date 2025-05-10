@@ -31,12 +31,16 @@
         summary
         enrollment_methods_info
 
+
     This is used in /course and /homepage courses card section
+    This "courses-card-wrapper" card must be wrapped with "courses-card-layout" class
+    "courses-card-wrapper" is equals to "col-md-6 col-lg-4"
+
 }}
 
 
-<div class="col-md-6 col-lg-4" data-courseid="{{id}}" data-type="{{datatype}}">
-    <div class="card course-card shadow-sm h-100 position-relative" >
+<div class="courses-card-wrapper" data-courseid="{{id}}" data-type="{{datatype}}">
+    <div class="card course-card h-100 position-relative" >
 
         <img src="{{thumbnail_image_link}}" class="course-img" alt="{{fullname}} Course Image" />
 

@@ -1,0 +1,97 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_apguidance/blocks/testimonial
+}}
+<section class="testimonial-collection">
+  <div id="testimonialCarousel" class="carousel slide testimonial-slider" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {{#testimonial}}
+      <div class="carousel-item" data-id="{{id}}" >
+        <div class="testimonial-card">
+          {{#image_url}}
+          <img src="{{image_url}}" alt="{{name}} image" class="testimonial-img" />
+          {{/image_url}}
+          <div class="testimonial-description">
+            "{{{content}}}"
+          </div>
+          <h5 class="testimonial-name">{{name}}</h5>
+          {{#designation}}
+          <span class="testimonial-designation">{{designation}}</span>
+          {{/designation}}
+        </div>
+      </div>
+      {{/testimonial}}
+      <!-- Add more carousel-item blocks as needed -->
+    </div>
+
+    <!-- Optional carousel controls -->
+    <div class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon custom-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000" viewBox="0 0 24 24">
+          <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon custom-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000" viewBox="0 0 24 24">
+          <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+        </svg>
+      </span>
+    </div>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('#testimonialCarousel .carousel-item').classList.add('active');
+      const carouselItems = document.querySelectorAll('#testimonialCarousel .carousel-item');
+      let currentIndex = 0;
+      let slideInterval;
+
+      // Function to show the next item
+      function showNextItem() {
+          carouselItems[currentIndex].classList.remove('active'); // Remove active class from current item
+          currentIndex = (currentIndex + 1) % carouselItems.length; // Loop to the first item after the last
+          carouselItems[currentIndex].classList.add('active'); // Add active class to the next item
+          resetAutoSlide(); // Reset the interval when moving to the next item
+      }
+
+      // Function to show the previous item
+      function showPrevItem() {
+          carouselItems[currentIndex].classList.remove('active'); // Remove active class from current item
+          currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length; // Loop to the last item if it's the first
+          carouselItems[currentIndex].classList.add('active'); // Add active class to the previous item
+          resetAutoSlide(); // Reset the interval when moving to the previous item
+      }
+
+      // Function to reset the interval
+      function resetAutoSlide() {
+          clearInterval(slideInterval); // Clear the existing interval
+          slideInterval = setInterval(showNextItem, 5000); // Restart the interval
+      }
+
+      // Add event listeners for next and previous buttons
+      document.querySelector('.carousel-control-next').addEventListener('click', showNextItem);
+      document.querySelector('.carousel-control-prev').addEventListener('click', showPrevItem);
+
+      // Start auto-sliding when the page loads
+      resetAutoSlide(); // Call the reset function to start the interval when the page loads
+    });
+  </script>
+</section>

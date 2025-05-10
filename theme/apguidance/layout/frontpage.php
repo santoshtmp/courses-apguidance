@@ -23,6 +23,7 @@
  */
 
 use theme_apguidance\handler\settings_handler;
+use theme_apguidance\handler\testimonial_handler;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -34,5 +35,11 @@ $templatecontext = array_merge(
     $templatecontext,
     settings_handler::front_page_settings()
 );
+// 
+$testimonial_home_block = get_config('theme_apguidance', 'testimonial_home_block');
+$templatecontext['testimonial_home_block'] = $testimonial_home_block;
+if ($testimonial_home_block) {
+    $templatecontext['testimonial'] = testimonial_handler::get_data_in_array('-1');
+}
 
 echo $OUTPUT->render_from_template('theme_apguidance/layout/frontpage', $templatecontext);
