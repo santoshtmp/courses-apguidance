@@ -46,6 +46,7 @@ $string['frontpage'] = "Front Page";
 $string['footer'] = "Footer";
 $string['logo'] = 'Logo';
 $string['favicon'] = 'Favicon';
+$string['custom_js'] = 'Custom JavaScript';
 $string['copyright'] = 'copyright text';
 $string['copyrightdesc'] = 'Copyright © {year} company name.';
 $string['website'] = 'Website URL';

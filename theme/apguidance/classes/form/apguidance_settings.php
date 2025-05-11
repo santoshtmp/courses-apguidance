@@ -32,8 +32,7 @@ use admin_setting_configstoredfile;
 use admin_setting_configtext;
 use admin_setting_configtextarea;
 use admin_setting_heading;
-
-
+use admin_setting_scsscode;
 
 /**
  * 
@@ -87,15 +86,6 @@ class apguidance_settings {
         ];
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $general_tab->add($setting);
-
-        // $setting = new admin_setting_heading('general_setting_other_separator', '', '<hr>');
-        // $general_tab->add($setting);
-
-        // $name = 'theme_apguidance/general_setting';
-        // $heading = 'General Setting';
-        // $information = '';
-        // $setting = new admin_setting_heading($name, $heading, $information);
-        // $general_tab->add($setting);
 
         // /**
         //  * -------------------- Setting heading :: Contact Detain --------------------
@@ -399,5 +389,53 @@ class apguidance_settings {
         // ------------------------------------------------------------------------------------------
 
         $settings->add($footer_tab);
+    }
+
+
+    /**
+     * style_script_settings   
+     * 
+     */
+    public static function style_script_settings($settings) {
+        global $CFG;
+        $general_tab = new admin_settingpage('style_script_settings_tab', 'Style Script');
+
+        /**
+         * -------------------- Setting heading --------------------
+         */
+        // $setting = new admin_setting_heading('style_script_settings_style_script_hr', '', '<hr>');
+        // $general_tab->add($setting);
+
+        $name = 'theme_apguidance/style_script';
+        $heading = 'Style Script';
+        $information = '';
+        $setting = new admin_setting_heading($name, $heading, $information);
+        $general_tab->add($setting);
+
+        // Raw SCSS to include after the content.
+        $setting = new admin_setting_scsscode(
+            'theme_apguidance/scss',
+            get_string('rawscss', 'theme_boost'),
+            get_string('rawscss_desc', 'theme_boost'),
+            '',
+            PARAM_RAW
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $general_tab->add($setting);
+
+        // Custom JavaScript
+        $setting = new admin_setting_configtextarea(
+            'theme_apguidance/custom_js',
+            get_string('custom_js', 'theme_apguidance'),
+            '',
+            '',
+            PARAM_RAW
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $general_tab->add($setting);
+
+
+        // Must add the page after definiting all the settings!
+        $settings->add($general_tab);
     }
 }

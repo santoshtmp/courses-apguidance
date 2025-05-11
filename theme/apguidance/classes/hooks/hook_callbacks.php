@@ -88,6 +88,21 @@ class hook_callbacks {
 
 	/**
 	 *
+	 * @param \core\hook\output\after_standard_main_region_html_generation $hook
+	 */
+	public static function after_standard_main_region_html_generation(\core\hook\output\after_standard_main_region_html_generation $hook): void {
+		global $CFG, $PAGE;
+		if (during_initial_install() || isset($CFG->upgraderunning)) {
+			// Do nothing during installation or upgrade.
+			return;
+		}
+		$output = "";
+		$output .= theme_apguidance_get_custom_js();
+		$hook->add_html($output);
+	}
+
+	/**
+	 *
 	 * @param \core\hook\output\before_standard_footer_html_generation $hook
 	 */
 	public static function before_standard_footer_html_generation(\core\hook\output\before_standard_footer_html_generation $hook): void {

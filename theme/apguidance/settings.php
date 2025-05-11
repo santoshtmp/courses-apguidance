@@ -26,7 +26,19 @@ defined('MOODLE_INTERNAL') || die();
 global $PAGE;
 if (optional_param('section', '', PARAM_TEXT) == 'themesettingapguidance') {
     if ($PAGE->pagelayout === 'admin' &&  $PAGE->pagetype === 'admin-setting-themesettingapguidance') {
-        $PAGE->requires->js_call_amd('theme_apguidance/main', 'theme_apguidance_setting_toggle');
+
+        // CodeMirror core & extras
+        $PAGE->requires->css(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css'));
+        $PAGE->requires->css(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/material-palenight.min.css'));
+
+        $PAGE->requires->js(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js'), true);
+        $PAGE->requires->js(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/javascript/javascript.min.js'), true);
+        $PAGE->requires->js(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/css/css.min.js'), true);
+        $PAGE->requires->js(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/display/autorefresh.min.js'), true);
+
+        // theme css and js
+        $PAGE->requires->css('/theme/apguidance/style/themesettingapguidance.css');
+        $PAGE->requires->js_call_amd('theme_apguidance/admin-themesetting', 'init', ['apguidance', ['banner_cta_count']]);
     }
 }
 
@@ -59,11 +71,19 @@ if ($hassiteconfig) {
     /**
      * Testimonial
      */
-
     $ADMIN->add('apguidanceadmin_general', new admin_externalpage(
         'apguidanceadmin_testimonial', // Unique identifier
-        get_string('testimonial', 'theme_apguidance'), // Link name
+        get_string('testimonial_list', 'theme_apguidance'), // Link name
         new moodle_url('/theme/apguidance/page/testimonial/list.php') // External URL
+    ));
+
+    /**
+     * Theme style script
+     */
+    $ADMIN->add('apguidanceadmin_general', new admin_externalpage(
+        'apguidanceadmin_style_script', // Unique identifier
+        "Custom Style & Script", // Link name
+        new moodle_url('/admin/settings.php?section=themesettingapguidance#style_script_settings_tab') // External URL
     ));
 
 
@@ -80,4 +100,5 @@ if ($ADMIN->fulltree) {
     \theme_apguidance\form\apguidance_settings::general_setting($settings);
     \theme_apguidance\form\apguidance_settings::frontpage_setting($settings);
     \theme_apguidance\form\apguidance_settings::footer_settings($settings);
+    \theme_apguidance\form\apguidance_settings::style_script_settings($settings);
 }

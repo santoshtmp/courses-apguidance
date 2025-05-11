@@ -115,6 +115,7 @@ function theme_apguidance_get_pre_scss($theme) {
  */
 function theme_apguidance_get_extra_scss($theme) {
     $extra_scss = '';
+    $extra_scss .=  "\n" . $theme->settings->scss;
     return $extra_scss;
 }
 
@@ -150,4 +151,15 @@ function theme_apguidance_user_preferences(): array {
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
     ];
+}
+
+/**
+ * Get theme setting custom js
+ */
+function theme_apguidance_get_custom_js() {
+    $custom_js = '';
+    if (get_config('theme_apguidance', 'custom_js')) {
+        $custom_js = '<script type="text/javascript" >' . get_config('theme_apguidance', 'custom_js') . '</script>';
+    }
+    return $custom_js;
 }
