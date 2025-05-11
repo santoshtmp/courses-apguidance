@@ -33,7 +33,7 @@ export const init = (theme_name, number_fields = []) => {
     if ($('body').hasClass('pagelayout-admin')) {
 
         theme_setting_tab_panel_title_toggle(theme_name);
-        define_number_fields(number_fields);
+        define_number_fields(theme_name, number_fields);
         initCodeMirror('id_s_theme_' + theme_name + '_scss', 'css');
         initCodeMirror('id_s_theme_' + theme_name + '_custom_js', 'javascript');
 
@@ -99,14 +99,15 @@ function theme_setting_tab_panel_title_toggle(theme_name) {
 
 /**
  *
+ * @param {*} theme_name
  * @param {*} number_fields
  */
-function define_number_fields(number_fields) {
+function define_number_fields(theme_name, number_fields) {
     // Edit input fields with id to number field
-    $.each(number_fields, function (index, id) {
-        if ($('input#id_s_theme_apguidance_' + id)) {
-            $('input#id_s_theme_apguidance_' + id).attr('type', 'number');
-            $('input#id_s_theme_apguidance_' + id).attr('min', 0);
+    $.each(number_fields, function (index, value) {
+        if ($('input#id_s_theme_' + theme_name + '_' + value)) {
+            $('input#id_s_theme_' + theme_name + '_' + value).attr('type', 'number');
+            $('input#id_s_theme_' + theme_name + '_' + value).attr('min', 0);
         }
     });
 }

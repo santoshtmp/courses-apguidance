@@ -37,7 +37,7 @@ if (optional_param('section', '', PARAM_TEXT) == 'themesettingapguidance') {
         $PAGE->requires->js(new moodle_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/display/autorefresh.min.js'), true);
 
         // theme css and js
-        $PAGE->requires->css('/theme/apguidance/style/themesettingapguidance.css');
+        $PAGE->requires->css('/theme/apguidance/style/admin-themesetting.css');
         $PAGE->requires->js_call_amd('theme_apguidance/admin-themesetting', 'init', ['apguidance', ['banner_cta_count']]);
     }
 }

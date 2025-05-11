@@ -126,7 +126,9 @@ function theme_apguidance_get_extra_scss($theme) {
  */
 function theme_apguidance_get_precompiled_css() {
     global $CFG;
-    return file_get_contents($CFG->dirroot . '/theme/apguidance/style/apguidance.css');
+    $precompiled_css = '';
+    $precompiled_css .= file_get_contents($CFG->dirroot . '/theme/yipl/style/moodle.css');
+    return $precompiled_css;
 }
 
 
