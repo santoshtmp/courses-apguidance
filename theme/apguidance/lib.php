@@ -155,13 +155,4 @@ function theme_apguidance_user_preferences(): array {
     ];
 }
 
-/**
- * Get theme setting custom js
- */
-function theme_apguidance_get_custom_js() {
-    $custom_js = '';
-    if (get_config('theme_apguidance', 'custom_js')) {
-        $custom_js = '<script type="text/javascript" >' . get_config('theme_apguidance', 'custom_js') . '</script>';
-    }
-    return $custom_js;
-}
+

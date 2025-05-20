@@ -28,6 +28,7 @@ namespace theme_apguidance\hooks;
 defined('MOODLE_INTERNAL') || die();
 
 use core\hook\output\before_http_headers;
+use theme_apguidance\handler\settings_handler;
 
 /**
  * Hook callbacks for theme_apguidance for moodle 4.5 and above
@@ -97,7 +98,7 @@ class hook_callbacks {
 			return;
 		}
 		$output = "";
-		$output .= theme_apguidance_get_custom_js();
+		$output .= settings_handler::get_custom_js();
 		$hook->add_html($output);
 	}
 

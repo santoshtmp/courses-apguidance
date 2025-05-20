@@ -33,13 +33,15 @@ use theme_apguidance\util\Util_handler;
 /**
  * 
  */
-class settings_handler {
+class settings_handler
+{
 
 
     /**
      * Get particular theme apguidance setting
      */
-    public static function setting($theme_apguidance_setting, $filearea = '') {
+    public static function setting($theme_apguidance_setting, $filearea = '')
+    {
         $theme = theme_config::load('apguidance');
         if ($filearea) {
             $file_url = $theme->setting_file_url($theme_apguidance_setting, $filearea);
@@ -55,7 +57,8 @@ class settings_handler {
     /**
      * Front Page settings
      */
-    public static function front_page_settings() {
+    public static function front_page_settings()
+    {
         global $PAGE;
         $theme = theme_config::load('apguidance');
 
@@ -89,7 +92,8 @@ class settings_handler {
     /**
      * Footer settings
      */
-    public static function footer_settings() {
+    public static function footer_settings()
+    {
         $theme = theme_config::load('apguidance');
         $copyright = $theme->settings->copyright;
         // $footer_menu_number = (int)$theme->settings->footer_menu_number;
@@ -146,7 +150,8 @@ class settings_handler {
     /**
      * Contact Detail settings
      */
-    public static function contact_details_settings() {
+    public static function contact_details_settings()
+    {
         $theme = theme_config::load('apguidance');
         $phone_number = $theme->settings->phone_number;
         $map_location = $theme->settings->map_location;
@@ -177,7 +182,8 @@ class settings_handler {
     /**
      * Check if the array key value is present or not
      */
-    public static function isArrayValuesEmpty($array) {
+    public static function isArrayValuesEmpty($array)
+    {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 if (!self::isArrayValuesEmpty($value)) {
@@ -189,4 +195,24 @@ class settings_handler {
         }
         return true;
     }
+
+
+    /**
+     * Get theme setting custom js
+     */
+    public static function get_custom_js()
+    {
+        $custom_js = '';
+        if (get_config('theme_apguidance', 'custom_js')) {
+            $custom_js = '<script type="text/javascript" >' . get_config('theme_apguidance', 'custom_js') . '</script>';
+        }
+        return $custom_js;
+    }
+
+
+    /**
+     * 
+     * ========= END ============
+     * 
+     */
 }
